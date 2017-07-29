@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "DEBUG=express:* RM_TOKEN=LotmO5MBqsuYta97dvS55P4DdPVKjZvJWik2UNgu0poELBbbV3UuvG6e-AMarfQ2 ./node_modules/nodemon/bin/nodemon.js server.js",
+    "dev": "RM_TOKEN=LotmO5MBqsuYta97dvS55P4DdPVKjZvJWik2UNgu0poELBbbV3UuvG6e-AMarfQ2 ./node_modules/nodemon/bin/nodemon.js server.js",
     "test": "jest --forceExit"
   },
   "author": "tiberius silivestru",

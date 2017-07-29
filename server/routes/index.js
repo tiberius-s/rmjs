@@ -11,11 +11,23 @@ routes.use(options);
 routes.get("/administration/users/current", request.send(200));
 
 // lists
-routes.get("/lists/:acct", request.send(200));
-routes.post("/lists/:acct", request.send(201));
-routes.get("/lists/:acct/:list", request.send(200));
-routes.put("/lists/:acct/:list", request.send(204));
-routes.delete("/lists/:acct/:list", request.send(204));
+routes.get("/lists/:acctId", request.send(200));
+routes.post("/lists/:acctId", request.send(201));
+routes.get("/lists/:acctId/:list", request.send(200));
+routes.put("/lists/:acctId/:list", request.send(204));
+routes.delete("/lists/:acctId/:list", request.send(204));
+
+// list recipients
+routes.post("/lists/recipients/:acctId/:listId", request.send(201));
+routes.get("/lists/recipients/:acctId/:listId/:email", request.send(200));
+routes.put("/lists/recipients/:acctId/:listId/:email", request.send(204));
+routes.delete("/lists/recipients/:acctId/:listId/:email", request.send(204));
+
+// mailings
+routes.post("/mailings/:acctId", request.send(201));
+routes.get("/mailings/:acctId/:mailId", request.send(200));
+routes.put("/mailings/:acctId/:mailId", request.send(204));
+routes.delete("/mailings/:acctId/:mailId", request.send(204));
 
 // For testing
 routes.get("/", (req, res) => {
