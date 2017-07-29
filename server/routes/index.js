@@ -10,6 +10,9 @@ routes.use(options);
 // administration
 routes.get("/administration/users/current", request.send(200));
 
+// campaigns
+routes.post('/campaigns/:acctId', request.send(201));
+
 // lists
 routes.get("/lists/:acctId", request.send(200));
 routes.post("/lists/:acctId", request.send(201));
