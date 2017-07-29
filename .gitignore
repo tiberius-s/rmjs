@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+test.json
+.eslintrc
+.vscode
+.DS_Store
+.env
+.editorconfig
