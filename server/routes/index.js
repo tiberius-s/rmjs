@@ -1,5 +1,11 @@
 const routes = require('express').Router();
 const request = require('routes/calls');
+const headers = require("middleware/headers");
+const options = require("middleware/options");
+
+// configure router
+routes.use(headers);
+routes.use(options);
 
 // administration
 routes.get('/administration/users/current', request.send(200));
