@@ -51,7 +51,7 @@ class AddList extends Component {
         <TextInput
           label="Name"
           name={"name"}
-          placeholder="Full Name"
+          placeholder="List Name"
           handler={this.handleChange}
           value={this.state.name}
         />

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TextInput from "../shared/TextInput";
 
-class CreateMailing extends Component {
+class CreateRecipient extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,4 +98,4 @@ class CreateMailing extends Component {
   }
 }
 
-export default CreateMailing;
+export default CreateRecipient;

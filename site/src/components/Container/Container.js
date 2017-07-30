@@ -15,7 +15,7 @@ class Container extends Component {
       <div className="container">
         <Lists lists={lists} focusedList={focusedList} />
         <Mailings mailings={mailings} />
-        <Forms />
+        <Forms focusedList={focusedList}/>
       </div>
     );
   }
