@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Api from "./api/Api";
 import Header from "./components/Header/Header";
-import List from "./components/List/List";
+import Container from './components/Container/Container'
 import "./App.css";
 class App extends Component {
   constructor() {
@@ -35,18 +35,11 @@ class App extends Component {
 
   render() {
     if (this.state.ready) {
-      const { lists, focusedList } = this.state;
+      const state = {...this.state};
       return (
         <div className="App">
           <Header />
-          <div className="lists">
-            {lists.map((list, index) => {
-              list.Name === focusedList.Name
-                ? (list.active = true)
-                : (list.active = false);
-              return <List key={index} {...list} />;
-            })}
-          </div>
+          <Container {...state} />
         </div>
       );
     } else {

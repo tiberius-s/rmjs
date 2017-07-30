@@ -1,12 +1,13 @@
 import React from "react";
 import moment from "moment";
+import './List.css';
 
 const formatDate = date =>
   moment(date).format("MMMM Do YYYY, h:mm:ss").toString();
 
 const List = list => {
   return (
-    <div>
+    <div className='list'>
       <h4>
         {list.Name}
       </h4>
@@ -21,7 +22,7 @@ const List = list => {
         Fields:
         {list.Fields.map((field, index) => {
           return (
-            <div key={index}>
+            <div className="field" key={index}>
               Name: {field.Name} | Type: {field.Type}
             </div>
           );
