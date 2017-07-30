@@ -3,7 +3,6 @@ const https = require("https");
 const TOKEN =
   "LotmO5MBqsuYta97dvS55P4DdPVKjZvJWik2UNgu0poELBbbV3UuvG6e-AMarfQ2";
 
-
 const headers = {
   Accept: "application/json",
   Authorization: `token ${TOKEN}`,
@@ -15,16 +14,16 @@ const headers = {
 const defaultOpts = {
   hostname: "services.reachmail.net",
   port: 443,
-  path: `/`,
+  path: "/",
   method: "GET",
   body: "",
   headers: headers
 };
 
 //call function
-function call(options) {
+function call(payload) {
   return new Promise((resolve, reject) => {
-    const opts = Object.assign({}, defaultOpts, options);
+    const opts = Object.assign({}, defaultOpts, payload);
     const body = JSON.stringify(opts.body);
     opts.headers["Content-Lengh"] = Buffer.byteLength(body);
     const req = https
