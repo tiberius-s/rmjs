@@ -1,9 +1,0 @@
-.list {
-  flex: 0 1 25%;
-  display: flex;
-  flex-direction: column;
-}
-
-.field {
-  padding-left: .5rem;
-}

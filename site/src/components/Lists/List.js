@@ -1,6 +1,5 @@
 import React from "react";
 import moment from "moment";
-import './List.css';
 
 const formatDate = date =>
   moment(date).format("MMMM Do YYYY, h:mm:ss").toString();
@@ -11,6 +10,9 @@ const List = list => {
       <h4>
         {list.Name}
       </h4>
+      <div>
+        Id: {list.Id}
+      </div>
       <div>
         Created on {formatDate(list.CreateDate)}
       </div>

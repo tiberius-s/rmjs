@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Lists from "../Lists/Lists";
+import './Container.css'
 
 class Container extends Component {
   constructor(props) {
