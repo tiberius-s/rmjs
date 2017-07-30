@@ -19,6 +19,8 @@ class App extends Component {
       })
       .then(res => (state.lists = res))
       .then(() => (state.focusedList = this.setFocusedList(state.lists)))
+      .then(() => Api.getMailings(state.accountId))
+      .then(res => state.mailings = res)
       .then(() => (state.ready = true))
       .then(() => this.setState({ ...state }));
   };

@@ -22,7 +22,7 @@ const post = (endpoint, data) => {
     headers: headers,
     body: JSON.stringify(data)
   };
-  return call(`${API}${endpoint}`, payload);
+  return call(endpoint, payload);
 };
 
 const put = (endpoint, data) => {
@@ -31,7 +31,7 @@ const put = (endpoint, data) => {
     headers: headers,
     body: JSON.stringify(data)
   };
-  return call(`${API}${endpoint}`, payload);
+  return call(endpoint, payload);
 };
 
 const del = endpoint => {
@@ -39,7 +39,7 @@ const del = endpoint => {
     method: "DELETE",
     headers: headers
   };
-  return call(`${API}/${endpoint}`, payload);
+  return call(endpoint, payload);
 };
 
 class Api {
@@ -61,10 +61,11 @@ class Api {
   };
 
   static getLists = acctId => {
-    return get(`/lists/${acctId}`).then(data => {
-      // const lists = data.map(item => )
-      return data;
-    })
+    return get(`/lists/${acctId}`).then(data => data);
+  }
+
+  static getMailings = acctId => {
+    return post(`/reports/mailings/summary/${acctId}`, {}).then(data => data);
   }
 
 }

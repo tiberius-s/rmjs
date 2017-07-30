@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Lists from "../Lists/Lists";
-import './Container.css'
+import Mailings from "../Mailings/Mailings";
+import Forms from '../Forms/Forms';
+import "./Container.css";
 
 class Container extends Component {
   constructor(props) {
@@ -8,10 +10,12 @@ class Container extends Component {
     this.state = { ...props };
   }
   render() {
-    const { lists, focusedList } = this.state;
+    const { lists, focusedList, mailings } = this.state;
     return (
       <div className="container">
         <Lists lists={lists} focusedList={focusedList} />
+        <Mailings mailings={mailings} />
+        
       </div>
     );
   }

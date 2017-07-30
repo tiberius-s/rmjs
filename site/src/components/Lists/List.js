@@ -4,9 +4,11 @@ import moment from "moment";
 const formatDate = date =>
   moment(date).format("MMMM Do YYYY, h:mm:ss").toString();
 
+const isFocused = bool => bool ? 'focused-list' : '';
+
 const List = list => {
   return (
-    <div className='list'>
+    <div className={`view-item ${isFocused(list.active)}`}>
       <h4>
         {list.Name}
       </h4>

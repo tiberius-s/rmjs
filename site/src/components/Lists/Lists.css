@@ -1,24 +1,7 @@
-.lists {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 1rem 0;
-  border-bottom: solid 1px grey;
-}
-
-.lists-view  {
-  flex: 1 0;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1rem;
-}
-
-.list {
-  flex: 0 1 25%;
-  padding: 1rem 1rem;
-  display: flex;
-  flex-direction: column;
+.focused-list {
+  border: 1px solid #294666;
 }
 
 .field {
-  padding-left: 1rem;
+   padding-left: 2rem;
 }
