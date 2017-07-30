@@ -43,7 +43,7 @@ const del = endpoint => {
 };
 
 class Api {
-  static getServer = () =>  API;
+  static getServer = () => API;
 
   static get = endpoint => get(endpoint);
 
@@ -52,6 +52,21 @@ class Api {
   static put = (endpoint, options) => put(endpoint, options);
 
   static del = endpoint => del(endpoint);
+
+  static getCurentUser = () => {
+    return get("/administration/users/current").then(data => ({
+      accountId: data.AccountId,
+      accountKey: data.AccountKey
+    }));
+  };
+
+  static getLists = acctId => {
+    return get(`/lists/${acctId}`).then(data => {
+      // const lists = data.map(item => )
+      return data;
+    })
+  }
+
 }
 
 export default Api;
