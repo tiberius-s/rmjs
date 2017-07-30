@@ -9,9 +9,11 @@ routes.use(options);
 
 // administration
 routes.get("/administration/users/current", request.send(200));
+routes.get("/administration/users/:acctId", request.send(200));
 
 // campaigns
 routes.post('/campaigns/:acctId', request.send(201));
+routes.get('/campaigns/scheduled', request.send(200));
 
 // lists
 routes.get("/lists/:acctId", request.send(200));
@@ -27,6 +29,7 @@ routes.put("/lists/recipients/:acctId/:listId/:email", request.send(204));
 routes.delete("/lists/recipients/:acctId/:listId/:email", request.send(204));
 
 // mailings
+routes.post("/reports/mailings/summary/:acctId", request.send(201));
 routes.post("/mailings/:acctId", request.send(201));
 routes.get("/mailings/:acctId/:mailId", request.send(200));
 routes.put("/mailings/:acctId/:mailId", request.send(204));
