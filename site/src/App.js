@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Api from "./api/Api";
 import Header from "./components/Header/Header";
+import List from "./components/List/List";
 import "./App.css";
 class App extends Component {
   constructor() {
@@ -18,6 +19,7 @@ class App extends Component {
       })
       .then(res => (state.lists = res))
       .then(() => (state.focusedList = this.setFocusedList(state.lists)))
+      .then(() => (state.ready = true))
       .then(() => this.setState({ ...state }));
   };
 
@@ -29,15 +31,32 @@ class App extends Component {
   setList = id => {
     const list = this.state.lists.filter(list => list.Id === id).pop();
     this.setState({ focusedList: list });
-  }
+  };
 
   render() {
-    return (
-      <div className="App">
-        <Header />
-        <div />
-      </div>
-    );
+    if (this.state.ready) {
+      const { lists, focusedList } = this.state;
+      return (
+        <div className="App">
+          <Header />
+          <div className="lists">
+            {lists.map((list, index) => {
+              list.Name === focusedList.Name
+                ? (list.active = true)
+                : (list.active = false);
+              return <List key={index} {...list} />;
+            })}
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <Header />
+          <div>Loading...</div>
+        </div>
+      );
+    }
   }
 }
 
