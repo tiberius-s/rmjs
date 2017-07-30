@@ -11,7 +11,7 @@
   padding: 0 .25rem;
 }
 
-.input {
+.input{
   flex: 1 0 70%;
   height: 80%;
 }
@@ -22,4 +22,10 @@
   justify-content: center;
   flex: 0 1 auto;
   padding: 1rem 1rem;
+}
+
+.form-control {
+  margin-left: -.5rem;
+  flex: 1 0 70%;
+  width: 100%;
 }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import CreateList from "./CreateList";
 import CreateRecipient from "./CreateRecipient";
-import CreateMailing from "./CreateMailing"
+import CreateMailing from "./CreateMailing";
+import ScheduleCampaign from "./ScheduleCampaign";
 
 class Forms extends Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class Forms extends Component {
         <div className="view-header">Forms</div>
         <div className="view-content">
           <CreateList />
-          <CreateRecipient focusedList={focusedList}/>
+          <CreateRecipient focusedList={focusedList} />
+          <CreateMailing />
+          <ScheduleCampaign />
         </div>
       </div>
     );

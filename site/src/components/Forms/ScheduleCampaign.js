@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import TextInput from "../shared/TextInput";
+import * as DateTime from "react-datetime";
+import moment from "moment";
 
-class CreateMailing extends Component {
+class ScheduleCampaign extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      subject: "",
-      fromName: "",
-      fromEmail: "",
-      replyToEmail: "",
-      textContent: ""
+      list: this.props.focusedList,
+      mailing: "",
+      deliveryTime: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -26,7 +25,7 @@ class CreateMailing extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("submitted new recipient!");
+    console.log("submitted new campaign!");
     // let values = this.state;
     // let body = [];
     // for (let val in values) {
@@ -38,69 +37,48 @@ class CreateMailing extends Component {
     // this.props.close();
   };
 
+  updateDate = date => {
+    console.log(date.toISOString());
+    // this.setState({deliveryTime})
+  };
+
   clear = () => {
     this.setState({
-      name: "",
-      subject: "",
-      fromName: "",
-      fromEmail: "",
-      replyToEmail: "",
-      textContent: ""
+      list: this.props.focusedList,
+      mailing: "",
+      deliveryDate: ""
     });
   };
 
   render() {
     return (
       <div className="view-item add-list">
-        <h3>Add Recipient to List</h3>
-
+        <h3>Add List</h3>
         <TextInput
-          label="Name"
+          label="List"
           name={"name"}
-          placeholder="Winter is Coming"
+          placeholder="List Name"
           handler={this.handleChange}
           value={this.state.name}
         />
-
         <TextInput
-          label="Subject"
-          name={"subject"}
-          placeholder="Winter is Coming"
+          label="Mailing"
+          name={"type"}
+          placeholder="Recipient, GlobalOptOut, etc..."
           handler={this.handleChange}
-          value={this.state.subject}
+          value={this.state.type}
         />
 
-        <TextInput
-          label="From Name"
-          name={"fromName"}
-          placeholder="Jon Snow"
-          handler={this.handleChange}
-          value={this.state.fromName}
-        />
-
-        <TextInput
-          label="From Email"
-          name={"fromEmail"}
-          placeholder="jsnow@winterfell.org"
-          handler={this.handleChange}
-          value={this.state.fromEmail}
-        />
-
-        <TextInput
-          label="Reply Email"
-          name={"replyToEmail"}
-          placeholder="jsnow@winterfell.org"
-          handler={this.handleChange}
-          value={this.state.replyToEmail}
-        />
-
-        <TextInput
-          label="Text"
-          name={"text"}
-          placeholder="Brace yourselves, winter's come!"
-          handler={this.handleChange}
-          value={this.state.textContent}
-        />
+        <div className="input-group">
+          <label className="input-label" >
+            Delivery
+          </label>
+          <DateTime
+            className="input"
+            defaultValue={moment()}
+            onChange={this.updateDate}
+          />
+        </div>
 
         <div className="btn-group">
           <span className="btn">
@@ -119,4 +97,4 @@ class CreateMailing extends Component {
   }
 }
 
-export default CreateMailing;
+export default ScheduleCampaign;
