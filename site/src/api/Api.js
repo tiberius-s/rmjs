@@ -14,7 +14,7 @@ const call = (endpoint, options) => {
     .catch(console.log);
 };
 
-const get = endpoint => call(endpoint, {headers: headers});
+const get = endpoint => call(endpoint, { headers: headers });
 
 const post = (endpoint, data) => {
   const payload = {
@@ -43,25 +43,15 @@ const del = endpoint => {
 };
 
 class Api {
-  static getServer() {
-    return API;
-  }
+  static getServer = () =>  API;
 
-  static get(endpoint) {
-    return get(endpoint);
-  }
+  static get = endpoint => get(endpoint);
 
-  static post(endpoint, options) {
-    return post(endpoint, options);
-  }
+  static post = (endpoint, options) => post(endpoint, options);
 
-  static put(endpoint, options) {
-    return put(endpoint, options)
-  }
+  static put = (endpoint, options) => put(endpoint, options);
 
-  static del(endpoint) {
-    return del(endpoint);
-  }
+  static del = endpoint => del(endpoint);
 }
 
 export default Api;
