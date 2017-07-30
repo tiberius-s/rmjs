@@ -46,7 +46,7 @@ class AddList extends Component {
 
   render() {
     return (
-      <div className=" add-list">
+      <div className="view-item add-list">
         <h3>Add List</h3>
         <TextInput
           label="Name"

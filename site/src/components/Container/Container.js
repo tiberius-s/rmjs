@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Lists from "../Lists/Lists";
 import Mailings from "../Mailings/Mailings";
-import Forms from '../Forms/Forms';
+import Forms from "../Forms/Forms";
 import "./Container.css";
 
 class Container extends Component {
@@ -15,7 +15,7 @@ class Container extends Component {
       <div className="container">
         <Lists lists={lists} focusedList={focusedList} />
         <Mailings mailings={mailings} />
-        
+        <Forms />
       </div>
     );
   }
