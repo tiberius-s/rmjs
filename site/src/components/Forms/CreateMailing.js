@@ -5,12 +5,13 @@ class CreateMailing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      subject: "",
-      fromName: "",
-      fromEmail: "",
-      replyToEmail: "",
-      textContent: ""
+      name: "Another Mailing",
+      subject: "Test",
+      fromName: "Tiberius",
+      fromEmail: "tiberius220@gmail.com",
+      replyToEmail: "tiberius220@gmail.com",
+      mailingFormat: "text",
+      textContent: "Hello World"
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -41,6 +42,7 @@ class CreateMailing extends Component {
       fromName: "",
       fromEmail: "",
       replyToEmail: "",
+      mailingFormat: "text",
       textContent: ""
     });
   };

@@ -8,9 +8,9 @@ const renderMailingId = id => {
   if (id !== undefined) {
     return (
       <div className="mailing-new">
-        <h3>
-          Mailing Id just created: {id}
-        </h3>
+        <h2>
+          Copy this MailingId just created:   {id}
+        </h2>
       </div>
     );
   }
@@ -42,7 +42,7 @@ const Container = props => {
       </div>
     );
   } else {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 };
 

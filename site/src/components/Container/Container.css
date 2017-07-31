@@ -24,6 +24,7 @@
 }
 
 .mailing-new {
+  color: red;
   text-align: center;
   font-weight: bold;
   border-bottom: solid #778FAA 1px;
