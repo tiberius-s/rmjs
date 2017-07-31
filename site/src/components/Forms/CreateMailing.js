@@ -5,13 +5,13 @@ class CreateMailing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Another Mailing",
-      subject: "Test",
-      fromName: "Tiberius",
-      fromEmail: "tiberius220@gmail.com",
-      replyToEmail: "tiberius220@gmail.com",
+      name: "",
+      subject: "",
+      fromName: "",
+      fromEmail: "",
+      replyToEmail: "",
       mailingFormat: "text",
-      textContent: "Hello World"
+      textContent: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
