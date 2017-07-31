@@ -53,7 +53,7 @@ class ScheduleCampaign extends Component {
   render() {
     return (
       <div className="view-item add-list">
-        <h3>Add List</h3>
+        <h3>Schedule Campaign</h3>
         <TextInput
           label="List"
           name={"name"}

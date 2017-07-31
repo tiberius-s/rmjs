@@ -62,12 +62,27 @@ class Api {
 
   static getLists = acctId => {
     return get(`/lists/${acctId}`).then(data => data);
-  }
+  };
 
   static getMailings = acctId => {
     return post(`/reports/mailings/summary/${acctId}`, {}).then(data => data);
-  }
+  };
 
+  static createList = (acctId, payload) => {
+    return post(`/lists/${acctId}`, payload).then(data => data);
+  };
+
+  static scheduleCampaign = (acctId, payload) => {
+    return post(`/campaigns/${acctId}`, payload).then(data => data);
+  };
+
+  static createMailing = (acctId, payload) => {
+    return post(`/mailings/${acctId}`, payload).then(data => data);
+  };
+
+  static addRecipient = (acctId, listId, payload) => {
+    return post(`/lists/recipients/${acctId}/${listId}`, payload).then(data => data);
+  }
 }
 
 export default Api;

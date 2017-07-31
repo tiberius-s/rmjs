@@ -52,7 +52,7 @@ class CreateMailing extends Component {
   render() {
     return (
       <div className="view-item add-list">
-        <h3>Add Recipient to List</h3>
+        <h3>Create Mailing</h3>
 
         <TextInput
           label="Name"

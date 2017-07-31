@@ -10,12 +10,12 @@ class Container extends Component {
     this.state = { ...props };
   }
   render() {
-    const { lists, focusedList, mailings } = this.state;
+    const { lists, focusedList, mailings, api } = this.state;
     return (
       <div className="container">
         <Lists lists={lists} focusedList={focusedList} />
         <Mailings mailings={mailings} />
-        <Forms focusedList={focusedList}/>
+        <Forms focusedList={focusedList} api={api} />
       </div>
     );
   }
