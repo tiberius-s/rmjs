@@ -5,17 +5,23 @@ services:
     container_name: rmjs-site
     build: ./site
     env_file: ./site/.env
+    command: start
     ports: 
       - "3000:3000"
+    volumes:
+      - ./site:/usr/src/app
     networks:
       - rm-net
   api:
     container_name: rmjs-api
-    build: ./server
+    build: ./
+    command: run dev
     environment: 
-     - TOKEn={{ADD TOKEN HERE!!!}}
+     - TOKEN={{ADD TOKEN HERE!!!}}
     ports: 
     - "3001:3001"
+    volumes:
+      - ./server:/usr/src/app
     networks:
       - rm-net
 networks:
