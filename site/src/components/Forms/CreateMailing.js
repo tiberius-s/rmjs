@@ -17,25 +17,21 @@ class CreateMailing extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    let name = event.target.name;
-    let value = event.target.value;
-    let values = this.state;
+    const name = event.target.name;
+    const value = event.target.value;
+    const values = this.state;
     Object.assign(values, { [name]: value });
     this.setState({ ...values });
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("submitted new recipient!");
-    // let values = this.state;
-    // let body = [];
-    // for (let val in values) {
-    //   body.push(values[val].toString());
-    // }
-    // this.props.api
-    //   .postTestSet(body)
-    //   .then(setTimeout(() => this.props.refresh(), 500));
-    // this.props.close();
+    let values = this.state;
+    const body = Object.assign({}, values);
+    this.props.api
+      .createMailing(this.props.accountId, body)
+      .then(res => res.Id)
+      .then(id => this.props.update({mailingId: id}));
   };
 
   clear = () => {
@@ -53,67 +49,68 @@ class CreateMailing extends Component {
     return (
       <div className="view-item add-list">
         <h3>Create Mailing</h3>
+        <form>
+          <TextInput
+            label="Name"
+            name={"name"}
+            placeholder="Winter is Coming"
+            handler={this.handleChange}
+            value={this.state.name}
+          />
 
-        <TextInput
-          label="Name"
-          name={"name"}
-          placeholder="Winter is Coming"
-          handler={this.handleChange}
-          value={this.state.name}
-        />
+          <TextInput
+            label="Subject"
+            name={"subject"}
+            placeholder="Winter is Coming"
+            handler={this.handleChange}
+            value={this.state.subject}
+          />
 
-        <TextInput
-          label="Subject"
-          name={"subject"}
-          placeholder="Winter is Coming"
-          handler={this.handleChange}
-          value={this.state.subject}
-        />
+          <TextInput
+            label="From Name"
+            name={"fromName"}
+            placeholder="Jon Snow"
+            handler={this.handleChange}
+            value={this.state.fromName}
+          />
 
-        <TextInput
-          label="From Name"
-          name={"fromName"}
-          placeholder="Jon Snow"
-          handler={this.handleChange}
-          value={this.state.fromName}
-        />
+          <TextInput
+            label="From Email"
+            name={"fromEmail"}
+            placeholder="jsnow@winterfell.org"
+            handler={this.handleChange}
+            value={this.state.fromEmail}
+          />
 
-        <TextInput
-          label="From Email"
-          name={"fromEmail"}
-          placeholder="jsnow@winterfell.org"
-          handler={this.handleChange}
-          value={this.state.fromEmail}
-        />
+          <TextInput
+            label="Reply Email"
+            name={"replyToEmail"}
+            placeholder="jsnow@winterfell.org"
+            handler={this.handleChange}
+            value={this.state.replyToEmail}
+          />
 
-        <TextInput
-          label="Reply Email"
-          name={"replyToEmail"}
-          placeholder="jsnow@winterfell.org"
-          handler={this.handleChange}
-          value={this.state.replyToEmail}
-        />
+          <TextInput
+            label="Text"
+            name={"textContent"}
+            placeholder="Brace yourselves, winter's come!"
+            handler={this.handleChange}
+            value={this.state.textContent}
+          />
 
-        <TextInput
-          label="Text"
-          name={"text"}
-          placeholder="Brace yourselves, winter's come!"
-          handler={this.handleChange}
-          value={this.state.textContent}
-        />
-
-        <div className="btn-group">
-          <span className="btn">
-            <button type="button" onClick={this.handleSubmit}>
-              Submit
-            </button>
-          </span>
-          <span className="btn">
-            <button type="button" onClick={this.clear}>
-              Clear
-            </button>
-          </span>
-        </div>
+          <div className="btn-group">
+            <span className="btn">
+              <button type="button" onClick={this.handleSubmit}>
+                Submit
+              </button>
+            </span>
+            <span className="btn">
+              <button type="button" onClick={this.clear}>
+                Clear
+              </button>
+            </span>
+          </div>
+        </form>
       </div>
     );
   }

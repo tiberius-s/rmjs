@@ -5,19 +5,17 @@ class CreateRecipient extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: this.props.focusedList.Id, 
+      list: this.props.focusedList.Id,
       email: "",
-      formatPreference: "",
-      optOut: "",
-      properties: []
+      name: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
     event.preventDefault();
-    let name = event.target.name;
-    let value = event.target.value;
+    const name = event.target.name;
+    const value = event.target.value;
     let values = this.state;
     Object.assign(values, { [name]: value });
     this.setState({ ...values });
@@ -26,24 +24,23 @@ class CreateRecipient extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log("submitted new recipient!");
-    // let values = this.state;
-    // let body = [];
-    // for (let val in values) {
-    //   body.push(values[val].toString());
-    // }
-    // this.props.api
-    //   .postTestSet(body)
-    //   .then(setTimeout(() => this.props.refresh(), 500));
-    // this.props.close();
+    const values = this.state;
+    const listId = values.list;
+    const properties = [{ Name: "FullName", Value: values.name }];
+    const body = Object.assign(
+      {},
+      { email: values.email, properties: properties }
+    );
+    this.props.api
+      .addRecipient(this.props.accountId, listId, body)
+      .then(data => this.props.update(data));
   };
 
   clear = () => {
     this.setState({
-      list: this.props.focusedList.Id, 
+      list: this.props.focusedList.Id,
       email: "",
-      formatPreference: "",
-      optOut: "",
-      properties: []
+      name: ""
     });
   };
 
@@ -51,48 +48,44 @@ class CreateRecipient extends Component {
     return (
       <div className="view-item add-list">
         <h3>Add Recipient to List</h3>
-        <TextInput
-          label="List"
-          name={"list"}
-          placeholder="List Id"
-          handler={this.handleChange}
-          value={this.state.list}
-        />
+        <form>
+          <TextInput
+            label="List"
+            name={"list"}
+            placeholder="List Id"
+            handler={this.handleChange}
+            value={this.state.list}
+          />
 
-        <TextInput
-          label="Name"
-          name={"name"}
-          placeholder="Full Name"
-          handler={this.handleChange}
-          value={this.state.name}
-        />
-        <TextInput
-          label="Preference"
-          name={"emailPreference"}
-          placeholder="Html, Text, TextAndHtml, None"
-          handler={this.handleChange}
-          value={this.state.emailPreference}
-        />
-        <TextInput
-          label="OptOut"
-          name={"optOut"}
-          placeholder="true or false"
-          handler={this.handleChange}
-          value={this.state.optOut}
-        />
+          <TextInput
+            label="Email"
+            name={"email"}
+            placeholder="jsnow@winterfell.net"
+            handler={this.handleChange}
+            value={this.state.email}
+          />
 
-        <div className="btn-group">
-          <span className="btn">
-            <button type="button" onClick={this.handleSubmit}>
-              Submit
-            </button>
-          </span>
-          <span className="btn">
-            <button type="button" onClick={this.clear}>
-              Clear
-            </button>
-          </span>
-        </div>
+          <TextInput
+            label="Name"
+            name={"name"}
+            placeholder="Jon Snow"
+            handler={this.handleChange}
+            value={this.state.name}
+          />
+
+          <div className="btn-group">
+            <span className="btn">
+              <button type="button" onClick={this.handleSubmit}>
+                Submit
+              </button>
+            </span>
+            <span className="btn">
+              <button type="button" onClick={this.clear}>
+                Clear
+              </button>
+            </span>
+          </div>
+        </form>
       </div>
     );
   }
