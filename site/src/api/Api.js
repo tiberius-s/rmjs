@@ -22,6 +22,8 @@ const post = (endpoint, data) => {
     headers: headers,
     body: JSON.stringify(data)
   };
+  console.log(payload)
+  console.log(endpoint)
   return call(endpoint, payload);
 };
 
@@ -69,6 +71,7 @@ class Api {
   };
 
   static createList = (acctId, payload) => {
+    console.log(payload);
     return post(`/lists/${acctId}`, payload).then(data => data);
   };
 

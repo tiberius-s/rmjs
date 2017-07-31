@@ -11,15 +11,15 @@ class Forms extends Component {
   }
 
   render() {
-    const { focusedList, api } = this.state;
+    const helpers = this.state;
     return (
       <div className="view">
         <div className="view-header">Forms</div>
         <div className="view-content">
-          <CreateList api={api}/>
-          <CreateRecipient api={api} focusedList={focusedList} />
-          <CreateMailing api={api}/>
-          <ScheduleCampaign api={api}/>
+          <CreateList {...helpers} />
+          <CreateRecipient {...helpers} />
+          <CreateMailing {...helpers} />
+          <ScheduleCampaign {...helpers} />
         </div>
       </div>
     );

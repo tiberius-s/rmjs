@@ -22,14 +22,13 @@ class AddList extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("submitted new list!");
     const values = this.state;
     const fields = values.fields.split(",");
     const body = Object.assign({}, values, { fields: fields });
-    console.log(body);
+    console.log(body)
     this.props.api
-      .postTestSet(body)
-      .then(setTimeout(() => this.props.refresh(), 500));
+      .createList(this.props.accountId, body)
+      .then(data => this.props.update(data));
   };
 
   clear = () => {

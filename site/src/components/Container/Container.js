@@ -4,21 +4,15 @@ import Mailings from "../Mailings/Mailings";
 import Forms from "../Forms/Forms";
 import "./Container.css";
 
-class Container extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...props };
-  }
-  render() {
-    const { lists, focusedList, mailings, api } = this.state;
-    return (
-      <div className="container">
-        <Lists lists={lists} focusedList={focusedList} />
-        <Mailings mailings={mailings} />
-        <Forms focusedList={focusedList} api={api} />
-      </div>
-    );
-  }
-}
+const Container = props => {
+  const { accountId, lists, focusedList, mailings, api, update } = props;
+  return (
+    <div className="container">
+      <Lists lists={lists} focusedList={focusedList} />
+      <Mailings mailings={mailings} />
+      <Forms focusedList={focusedList} accountId={accountId} update={update} api={api} />
+    </div>
+  );
+};
 
 export default Container;
