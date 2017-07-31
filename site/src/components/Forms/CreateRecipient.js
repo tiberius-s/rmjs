@@ -33,7 +33,8 @@ class CreateRecipient extends Component {
     );
     this.props.api
       .addRecipient(this.props.accountId, listId, body)
-      .then(data => this.props.update(data));
+      .then(this.props.update(null))
+      .then(this.clear);
   };
 
   clear = () => {
