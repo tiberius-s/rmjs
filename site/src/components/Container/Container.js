@@ -7,15 +7,18 @@ import "./Container.css";
 const renderMailingId = id => {
   if (id !== undefined) {
     return (
-      <div className='mailing-new'>
-        <h3>Mailing Id just created: {id}</h3>
+      <div className="mailing-new">
+        <h3>
+          Mailing Id just created: {id}
+        </h3>
       </div>
-    )
+    );
   }
-}
+};
 
 const Container = props => {
   const {
+    ready,
     accountId,
     lists,
     focusedList,
@@ -24,19 +27,23 @@ const Container = props => {
     update,
     mailingId
   } = props;
-  return (
-    <div className="container">
-      <Lists lists={lists} focusedList={focusedList} />
-      <Mailings mailings={mailings} />
-      {renderMailingId(mailingId)}
-      <Forms
-        focusedList={focusedList}
-        accountId={accountId}
-        update={update}
-        api={api}
-      />
-    </div>
-  );
+  if (ready) {
+    return (
+      <div className="container">
+        <Lists lists={lists} focusedList={focusedList} />
+        <Mailings mailings={mailings} />
+        {renderMailingId(mailingId)}
+        <Forms
+          focusedList={focusedList}
+          accountId={accountId}
+          update={update}
+          api={api}
+        />
+      </div>
+    );
+  } else {
+    return <div>Loading...</div>
+  }
 };
 
 export default Container;

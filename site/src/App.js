@@ -47,22 +47,13 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.ready) {
-      const state = { ...this.state };
-      return (
-        <div className="App">
-          <Header />
-          <Container {...state} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <Header />
-          <div>Loading...</div>
-        </div>
-      );
-    }
+    const state = { ...this.state };
+    return (
+      <div className="App">
+        <Header />
+        <Container {...state} />
+      </div>
+    );
   }
 }
 
