@@ -25,4 +25,3 @@ docker-compose down
 ### if you prefer a dev environment with live reload:
 1. cd into each, site and server, and run `npm install` 
 2. add the same token to the docker-compose.dev.yml: `docker-compose -f docker-compose.dev.yml up -d`
-````
