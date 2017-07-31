@@ -4,5 +4,4 @@ test.sh
 .eslintrc
 .vscode
 .DS_Store
-.env
 .editorconfig

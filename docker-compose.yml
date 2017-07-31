@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  site:
+    build: ./site
+    ports:
+      - "3000:3000"
+    environment:
+     env_file: ./site/.env
+  api:
+    build: ./api
+    ports:
+      - "3001:3001"
+networks:
+  enabler:

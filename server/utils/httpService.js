@@ -1,7 +1,6 @@
 const https = require("https");
 
-const TOKEN =
-  "LotmO5MBqsuYta97dvS55P4DdPVKjZvJWik2UNgu0poELBbbV3UuvG6e-AMarfQ2";
+const TOKEN = process.env.TOKEN || new Error("ReachMail token not set in env variable");
 
 const headers = {
   Accept: "application/json",
