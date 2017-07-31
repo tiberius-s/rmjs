@@ -25,7 +25,6 @@ class AddList extends Component {
     const values = this.state;
     const fields = values.fields.split(",");
     const body = Object.assign({}, values, { fields: fields });
-    console.log(body)
     this.props.api
       .createList(this.props.accountId, body)
       .then(data => this.props.update(data));
@@ -43,43 +42,44 @@ class AddList extends Component {
     return (
       <div className="view-item add-list">
         <h3>Create List</h3>
+        <form>
+          <TextInput
+            label="Name"
+            name={"name"}
+            placeholder="List Name"
+            handler={this.handleChange}
+            value={this.state.name}
+          />
 
-        <TextInput
-          label="Name"
-          name={"name"}
-          placeholder="List Name"
-          handler={this.handleChange}
-          value={this.state.name}
-        />
+          <TextInput
+            label="Type"
+            name={"type"}
+            placeholder="Recipient, GlobalOptOut, etc..."
+            handler={this.handleChange}
+            value={this.state.type}
+          />
 
-        <TextInput
-          label="Type"
-          name={"type"}
-          placeholder="Recipient, GlobalOptOut, etc..."
-          handler={this.handleChange}
-          value={this.state.type}
-        />
+          <TextInput
+            label="Fields"
+            name={"fields"}
+            placeholder="Comma Separated Fields (Name, Email)"
+            handler={this.handleChange}
+            value={this.state.fields}
+          />
 
-        <TextInput
-          label="Fields"
-          name={"fields"}
-          placeholder="Comma Separated Fields (Name, Email)"
-          handler={this.handleChange}
-          value={this.state.fields}
-        />
-
-        <div className="btn-group">
-          <span className="btn">
-            <button type="button" onClick={this.handleSubmit}>
-              Submit
-            </button>
-          </span>
-          <span className="btn">
-            <button type="button" onClick={this.clear}>
-              Clear
-            </button>
-          </span>
-        </div>
+          <div className="btn-group">
+            <span className="btn">
+              <button type="button" onClick={this.handleSubmit}>
+                Submit
+              </button>
+            </span>
+            <span className="btn">
+              <button type="button" onClick={this.clear}>
+                Clear
+              </button>
+            </span>
+          </div>
+        </form>
       </div>
     );
   }
