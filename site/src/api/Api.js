@@ -22,8 +22,6 @@ const post = (endpoint, data) => {
     headers: headers,
     body: JSON.stringify(data)
   };
-  console.log(payload)
-  console.log(endpoint)
   return call(endpoint, payload);
 };
 
@@ -84,8 +82,10 @@ class Api {
   };
 
   static addRecipient = (acctId, listId, payload) => {
-    return post(`/lists/recipients/${acctId}/${listId}`, payload).then(data => data);
-  }
+    return post(`/lists/recipients/${acctId}/${listId}`, payload).then(
+      data => data
+    );
+  };
 }
 
 export default Api;
