@@ -5,7 +5,7 @@
 
 1. clone the repo
 ```sh
-git clone git@github.com:tiberius-s/rmjs.git
+git clone https://github.com/tiberius-s/rmjs.git
 ```
 2. cd into the cloned directory
 ```sh
