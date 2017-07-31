@@ -2,8 +2,7 @@ const API = process.env.API || "http://localhost:3001";
 
 const headers = {
   Accept: "application/json",
-  "Content-Type": "application/json",
-  "Cache-Control": "no-cache"
+  "Content-Type": "application/json"
 };
 
 const json = res => res.json();
