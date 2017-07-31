@@ -7,9 +7,9 @@ class ScheduleCampaign extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: this.props.focusedList,
+      list: this.props.focusedList.Id,
       mailing: "",
-      deliveryTime: ""
+      deliveryTime: moment()
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -25,28 +25,32 @@ class ScheduleCampaign extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("submitted new campaign!");
-    // let values = this.state;
-    // let body = [];
-    // for (let val in values) {
-    //   body.push(values[val].toString());
-    // }
-    // this.props.api
-    //   .postTestSet(body)
-    //   .then(setTimeout(() => this.props.refresh(), 500));
-    // this.props.close();
+    let values = this.state;
+    const body = Object.assign(
+      {},
+      {
+        listIds: [values.list],
+        mailingId: values.mailing,
+        properties: {
+          deliveryTime: values.deliveryTime.toISOString()
+        }
+      }
+    );
+    this.props.api
+      .scheduleCampaign(this.props.accountId, body)
+      .then(this.props.update(null));
   };
 
   updateDate = date => {
-    console.log(date.toISOString());
-    // this.setState({deliveryTime})
+    console.log(date);
+    this.setState({ deliveryTime: date });
   };
 
   clear = () => {
     this.setState({
-      list: this.props.focusedList,
+      list: this.props.focusedList.Id,
       mailing: "",
-      deliveryDate: ""
+      deliveryDate: moment()
     });
   };
 
@@ -55,27 +59,25 @@ class ScheduleCampaign extends Component {
       <div className="view-item add-list">
         <h3>Schedule Campaign</h3>
         <TextInput
-          label="List"
-          name={"name"}
-          placeholder="List Name"
+          label="List Id"
+          name={"list"}
+          placeholder="List Id"
           handler={this.handleChange}
-          value={this.state.name}
+          value={this.state.list}
         />
         <TextInput
-          label="Mailing"
-          name={"type"}
-          placeholder="Recipient, GlobalOptOut, etc..."
+          label="Mailing Id"
+          name={"mailing"}
+          placeholder="Paste Mailing Id here"
           handler={this.handleChange}
-          value={this.state.type}
+          value={this.state.mailing}
         />
 
         <div className="input-group">
-          <label className="input-label" >
-            Delivery
-          </label>
+          <label className="input-label">Delivery</label>
           <DateTime
             className="input"
-            defaultValue={moment()}
+            defaultValue={this.state.deliveryTime}
             onChange={this.updateDate}
           />
         </div>

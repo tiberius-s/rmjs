@@ -40,9 +40,10 @@ class App extends Component {
   };
 
   updateState = obj => {
-    console.log(obj);
-    const state = this.state;
-    this.setState(Object.assign(state, obj));
+    if (obj !== null) {
+      const state = this.state;
+      this.setState(Object.assign(state, obj));
+    }
     this.init();
   };
 

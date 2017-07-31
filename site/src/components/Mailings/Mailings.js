@@ -16,7 +16,7 @@ const filterMailing = item => ({
 const Mailings = ({mailings})  => {
   return (
     <div className="view">
-      <div className="view-header">Mailings</div>
+      <div className="view-header">Mailings Reports</div>
       <div className="view-content">
         {mailings.map(filterMailing).map((mailing, index) => {
           return <Mailing key={index} {...mailing} />;
